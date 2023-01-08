@@ -1,6 +1,7 @@
 package com.msokolowska.todolist;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -37,6 +38,8 @@ public class FileHelper {
         } catch (FileNotFoundException e) {
             itemList = new ArrayList<>();
             e.printStackTrace();
+            //show Toast message for user
+            Toast.makeText(context,"File not found!",Toast.LENGTH_LONG).show();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
