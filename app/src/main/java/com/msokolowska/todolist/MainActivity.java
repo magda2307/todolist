@@ -1,6 +1,5 @@
 package com.msokolowska.todolist;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -36,18 +35,10 @@ public class MainActivity extends AppCompatActivity {
             arrayAdapter.notifyDataSetChanged();
         });
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-            alert.setTitle("Delete");
-            alert.setMessage("Do you want to delete this item from list?");
-            alert.setCancelable(false);
-            alert.setNegativeButton("No", (dialog, which) -> dialog.cancel());
-            alert.setPositiveButton("Yes", (dialog, which) -> {
-                itemList.remove(position);
-                arrayAdapter.notifyDataSetChanged();
-                FileHelper.writeData(itemList, getApplicationContext());
-            });
-            AlertDialog alertDialog = alert.create();
-            alertDialog.show();
+            AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(itemList, arrayAdapter, position);
+            alertDialogFragment.show(getSupportFragmentManager(), "alert");
         });
+
+        }
     }
-}
+
