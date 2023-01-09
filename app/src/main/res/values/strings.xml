@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">todolist</string>
     <string name="delete_question">Do you want to delete this item from list?</string>
+    <string-array name="elements">
+        <item>https://example.com/</item>
+        <item>https://tinyurl.com/52ty3d2v</item>
+        <item><html>
+<head>
+<style>
+body {
+  background-color: lightblue;
+}
+</style>
+</head>
+<body>
+
+<h1>Hello World!</h1>
+
+<p>This page has a light blue background color!</p>
+
+</body>
+</html>
+
+
+</item>
+    </string-array>
 </resources>
