@@ -44,11 +44,9 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
             item.setText("");
             // Using my ToDoService class and starting the service
-            Intent intent = new Intent(this, ToDoService.class);
-            intent.putExtra("modified_data", itemList);
-            startService(intent);
+            Intent serviceIntent = new Intent(this, ToDoService.class);
+            serviceIntent.putExtra("modified_data", itemList);
+            startService(serviceIntent);
         });
-
     }
-
 }
