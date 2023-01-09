@@ -1,6 +1,7 @@
 package com.msokolowska.todolist;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         item = findViewById(R.id.editText);
         button = findViewById(R.id.button);
         recyclerView = findViewById(R.id.recycleView);
-
         itemList = FileHelper.readData(this);
 
         // Adding LinearLayoutManager to avoid Android skipping the layout and
@@ -41,10 +41,14 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(view -> {
             String itemName = item.getText().toString();
             itemList.add(itemName);
-            item.setText("");
-            FileHelper.writeData(itemList, getApplicationContext());
             adapter.notifyDataSetChanged();
+            item.setText("");
+            // Using my ToDoService class and starting the service
+            Intent intent = new Intent(this, ToDoService.class);
+            intent.putExtra("modified_data", itemList);
+            startService(intent);
         });
+
     }
 
 }
