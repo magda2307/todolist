@@ -33,7 +33,7 @@ This basic To-Do List app allows users to add items to a list and sort the list 
 
 ## <b>Things that are yet to be implemented</b>
 
-* I couldn't figure Task 9B and 9C out. Aaand I kind of think that I may messed up my name of first commit or two. Terribly sorry, I am just a young padawan :cowboy_hat_face:.
+* I couldn't figure Task 9B and 9C out. Aaand I kind of think that I may messed up name of first commit or two. Terribly sorry, I am just a young padawan :cowboy_hat_face:.
 I tried for many hours to implement a mechanism to hide items with isDeleted = true without UI blanks or crazy app behavior.
 * I did my best, and I had a blast doing these tasks. No matter your 'recruitment' outcome, I feel good and blessed because I focused and dedicated tons of my time to my personal developmentand that's always time well spent.
 * Thank you for this opportunity and I hope you will find employees you are looking for :grin:. Cheers!
