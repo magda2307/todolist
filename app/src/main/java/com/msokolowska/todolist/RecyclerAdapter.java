@@ -13,14 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private final MainActivity mainActivity;
-    private final ArrayList<String> itemList;
+    private final ArrayList<ToDoItem> itemList;
     private final String[] elements;
 
-    public RecyclerAdapter(MainActivity mainActivity, ArrayList<String> itemList, String[] elements) {
+    public RecyclerAdapter(MainActivity mainActivity, ArrayList<ToDoItem> itemList, String[] elements) {
         this.mainActivity = mainActivity;
         this.itemList = itemList;
         this.elements = elements;
@@ -35,15 +34,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        /*checking whether the position if item is even or odd. in case of odd - instead of text, web object
-        will be displayed*/
-        if(position % 2 == 0) {
-            holder.textView.setText(itemList.get(position));
+    /*checking whether the position if item is even or odd. in case of odd - instead of text, web object
+    will be displayed*/
+        ToDoItem item = itemList.get(position);
+        if (position % 2 == 0) {
+            holder.textView.setText(item.getText());
             holder.textView.setVisibility(View.VISIBLE);
             holder.webView.setVisibility(View.GONE);
         } else {
             // Odd position - display webView
-            String element = elements[position%3];
+            String element = elements[position % 3];
             // Setting WebViewClient prevents app from unnecessary opening Google Chrome
             holder.webView.setWebViewClient(new WebViewClient());
             if (URLUtil.isValidUrl(element)) {
@@ -58,13 +58,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
         // Delete icon applies to both web and text based items
         holder.deleteIcon.setOnClickListener(view -> {
-            AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(itemList, this, position);
+            AlertDialogFragment alertDialogFragment = AlertDialogFragment.newInstance(itemList, this, position, mainActivity);
             alertDialogFragment.show(mainActivity.getSupportFragmentManager(), "alert");
         });
     }
 
+
     @Override
     public int getItemCount() {
+        if (itemList == null) {
+            return 0;
+        }
         return itemList.size();
     }
 
