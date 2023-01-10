@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Date;
-
+// This class represents a single item from to do list.
 public class ToDoItem implements Parcelable {
     private String id;
     private String date;
@@ -18,13 +18,14 @@ public class ToDoItem implements Parcelable {
         this.isDeleted = isDeleted;
     }
 
+    // Parcelable constructor
     protected ToDoItem(Parcel in) {
         id = in.readString();
         date = in.readString();
         text = in.readString();
         isDeleted = in.readByte() != 0;
     }
-
+    // Parcelable creator
     public static final Creator<ToDoItem> CREATOR = new Creator<ToDoItem>() {
         @Override
         public ToDoItem createFromParcel(Parcel in) {
@@ -37,6 +38,7 @@ public class ToDoItem implements Parcelable {
         }
     };
 
+    // Implementation of writeToParcel method for Parcelable interface
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
@@ -49,7 +51,7 @@ public class ToDoItem implements Parcelable {
     public int describeContents() {
         return 0;
     }
-
+    // Getters and setters
     public String getId() {
         return id;
     }

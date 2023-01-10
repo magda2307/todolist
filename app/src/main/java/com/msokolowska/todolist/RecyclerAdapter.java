@@ -13,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
+/* Class responsible for displaying items inside list. It also is responsible for
+ * displaying trash icon and handling deleting items mechanism.
+/
+ */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private final MainActivity mainActivity;
     private final ArrayList<ToDoItem> itemList;
